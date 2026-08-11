@@ -3,16 +3,43 @@ import { ClipboardCheck } from "lucide-react";
 
 import Layout from "../../components/layout/Layout";
 import { getAssessments } from "../../services/assessmentService";
+import { getEmployees } from "../../services/employeeService";
+import { getSkills } from "../../services/skillService";
 
 export default function HRAssessments() {
-
     const [assessments, setAssessments] = useState([]);
+    const [employees, setEmployees] = useState([]);
+    const [skills, setSkills] = useState([]);
 
     useEffect(() => {
-        getAssessments()
-            .then(setAssessments)
+        Promise.all([
+            getAssessments(),
+            getEmployees(),
+            getSkills()
+        ])
+            .then(([assessmentData, employeeData, skillData]) => {
+                setAssessments(assessmentData);
+                setEmployees(employeeData);
+                setSkills(skillData);
+            })
             .catch(console.error);
     }, []);
+
+    const getEmployeeName = (employeeId) => {
+        const employee = employees.find(
+            emp => emp.id === employeeId
+        );
+
+        return employee ? employee.name : `Employee #${employeeId}`;
+    };
+
+    const getSkillName = (skillId) => {
+        const skill = skills.find(
+            skill => skill.id === skillId
+        );
+
+        return skill ? skill.skillName : `Skill #${skillId}`;
+    };
 
     return (
         <Layout>
@@ -50,9 +77,15 @@ export default function HRAssessments() {
 
                         <tr key={item.id}>
 
-                            <td>#{item.employeeId}</td>
+                            <td>
+                                <strong>
+                                    {getEmployeeName(item.employeeId)}
+                                </strong>
+                            </td>
 
-                            <td>Skill #{item.skillId}</td>
+                            <td>
+                                {getSkillName(item.skillId)}
+                            </td>
 
                             <td>
                                 <strong>
@@ -61,17 +94,17 @@ export default function HRAssessments() {
                             </td>
 
                             <td>
-                                    <span
-                                        className={`status ${
-                                            item.passed
-                                                ? "valid"
-                                                : "expired"
-                                        }`}
-                                    >
-                                        {item.passed
-                                            ? "PASSED"
-                                            : "FAILED"}
-                                    </span>
+                                <span
+                                    className={`status ${
+                                        item.passed
+                                            ? "valid"
+                                            : "expired"
+                                    }`}
+                                >
+                                    {item.passed
+                                        ? "PASSED"
+                                        : "FAILED"}
+                                </span>
                             </td>
 
                         </tr>

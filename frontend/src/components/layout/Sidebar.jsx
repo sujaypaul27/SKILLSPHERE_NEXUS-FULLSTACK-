@@ -8,6 +8,7 @@ import {
     Award,
     Target,
     LogOut,
+    GraduationCap,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
@@ -43,6 +44,21 @@ export default function Sidebar() {
         {
             name: "Certifications",
             path: "/employee/certifications",
+            icon: Award,
+        },
+        {
+            name: "Learning",
+            path: "/employee/learning",
+            icon: GraduationCap,
+        },
+        {
+            name: "Learning Paths",
+            path: "/employee/learning-paths",
+            icon: BookOpen,
+        },
+        {
+            name: "My Certificates",
+            path: "/employee/certificates",
             icon: Award,
         },
     ];
@@ -81,6 +97,31 @@ export default function Sidebar() {
         {
             name: "Certifications",
             path: "/hr/certifications",
+            icon: Award,
+        },
+        {
+            name: "Learning Dashboard",
+            path: "/hr/learning",
+            icon: GraduationCap,
+        },
+        {
+            name: "Courses",
+            path: "/hr/courses",
+            icon: BookOpen,
+        },
+        {
+            name: "Enrollments",
+            path: "/hr/enrollments",
+            icon: ClipboardCheck,
+        },
+        {
+            name: "Learning Paths",
+            path: "/hr/learning-paths",
+            icon: Target,
+        },
+        {
+            name: "Certificates",
+            path: "/hr/certificates",
             icon: Award,
         },
     ];

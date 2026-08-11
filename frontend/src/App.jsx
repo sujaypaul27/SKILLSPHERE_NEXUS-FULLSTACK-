@@ -11,11 +11,21 @@ import HRAssessments from "./pages/hr/HRAssessments";
 import HRCompetencies from "./pages/hr/HRCompetencies";
 import HRCertifications from "./pages/hr/HRCertifications";
 
+
 import EmployeeProfile from "./pages/employee/EmployeeProfile";
 import EmployeeSkills from "./pages/employee/EmployeeSkills";
 import EmployeeAssessments from "./pages/employee/EmployeeAssessments";
 import EmployeeCompetencies from "./pages/employee/EmployeeCompetencies";
 import EmployeeCertifications from "./pages/employee/EmployeeCertifications";
+
+import EmployeeLearning from "./pages/employee/EmployeeLearning";
+import EmployeeLearningPaths from "./pages/employee/EmployeeLearningPaths";
+import EmployeeCertificates from "./pages/employee/EmployeeCertificates";
+import HRLearningDashboard from "./pages/hr/HRLearningDashboard";
+import HRCourses from "./pages/hr/HRCourses";
+import HREnrollments from "./pages/hr/HREnrollments";
+import HRLearningPaths from "./pages/hr/HRLearningPaths";
+import HRCertificates from "./pages/hr/HRCertificates";
 
 function ProtectedRoute({ children, role }) {
     const { user } = useAuth();
@@ -167,6 +177,15 @@ export default function App() {
                     </ProtectedRoute>
                 }
             />
+            <Route path="/employee/learning" element={<ProtectedRoute role="EMPLOYEE"><EmployeeLearning /></ProtectedRoute>} />
+            <Route path="/employee/learning-paths" element={<ProtectedRoute role="EMPLOYEE"><EmployeeLearningPaths /></ProtectedRoute>} />
+            <Route path="/employee/certificates" element={<ProtectedRoute role="EMPLOYEE"><EmployeeCertificates /></ProtectedRoute>} />
+
+            <Route path="/hr/learning" element={<ProtectedRoute role="HR"><HRLearningDashboard /></ProtectedRoute>} />
+            <Route path="/hr/courses" element={<ProtectedRoute role="HR"><HRCourses /></ProtectedRoute>} />
+            <Route path="/hr/enrollments" element={<ProtectedRoute role="HR"><HREnrollments /></ProtectedRoute>} />
+            <Route path="/hr/learning-paths" element={<ProtectedRoute role="HR"><HRLearningPaths /></ProtectedRoute>} />
+            <Route path="/hr/certificates" element={<ProtectedRoute role="HR"><HRCertificates /></ProtectedRoute>} />
 
             <Route path="*" element={<Navigate to="/login" replace />} />
 

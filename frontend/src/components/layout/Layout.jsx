@@ -16,7 +16,7 @@ export default function Layout({ children }) {
                 </div>
 
                 <div className="header-title">
-                    Milestone 1: Employee Skill Management
+                    SkillSphere-Nexus
                 </div>
 
                 <div className="user-section">

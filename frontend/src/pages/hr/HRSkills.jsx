@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Brain, CheckCircle, XCircle } from "lucide-react";
-
+import { getEmployees } from "../../services/employeeService";
 import Layout from "../../components/layout/Layout";
 import {
     getSkills,
@@ -8,10 +8,20 @@ import {
     deleteSkill,
 } from "../../services/skillService";
 
+
 export default function HRSkills() {
 
     const [skills, setSkills] = useState([]);
+    const [employees, setEmployees] = useState([]);
 
+    const loadEmployees = async () => {
+        try {
+            const data = await getEmployees();
+            setEmployees(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     const loadSkills = async () => {
         try {
             const data = await getSkills();
@@ -23,11 +33,13 @@ export default function HRSkills() {
 
     useEffect(() => {
         loadSkills();
+        loadEmployees();
     }, []);
 
     const handleVerify = async (id) => {
         await verifySkill(id);
         loadSkills();
+
     };
 
     const handleDelete = async (id) => {
@@ -36,6 +48,14 @@ export default function HRSkills() {
         await deleteSkill(id);
         loadSkills();
     };
+    const getEmployeeName= (employeeId)=>
+    {
+        const employee = employees.find(
+            emp=> emp.id ==employeeId
+        );
+        return employee ? employee.name: `Employee${employeeId}`;
+    }
+
 
     return (
         <Layout>
@@ -80,7 +100,7 @@ export default function HRSkills() {
 
                             <tr key={skill.id}>
 
-                                <td>#{skill.employeeId}</td>
+                                <td>{getEmployeeName(skill.employeeId)}</td>
 
                                 <td>
                                     <strong>
