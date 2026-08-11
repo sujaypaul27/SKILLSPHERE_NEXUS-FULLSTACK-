@@ -10,7 +10,7 @@ import HRSkillCatalog from "./pages/hr/HRSkillCatalog";
 import HRAssessments from "./pages/hr/HRAssessments";
 import HRCompetencies from "./pages/hr/HRCompetencies";
 import HRCertifications from "./pages/hr/HRCertifications";
-
+import HRCertificationTracking from "./pages/hr/HRCertificationTracking";
 
 import EmployeeProfile from "./pages/employee/EmployeeProfile";
 import EmployeeSkills from "./pages/employee/EmployeeSkills";
@@ -26,6 +26,7 @@ import HRCourses from "./pages/hr/HRCourses";
 import HREnrollments from "./pages/hr/HREnrollments";
 import HRLearningPaths from "./pages/hr/HRLearningPaths";
 import HRCertificates from "./pages/hr/HRCertificates";
+import HRComplianceReports from "./pages/hr/HRComplianceReports";
 
 function ProtectedRoute({ children, role }) {
     const { user } = useAuth();
@@ -188,7 +189,8 @@ export default function App() {
             <Route path="/hr/certificates" element={<ProtectedRoute role="HR"><HRCertificates /></ProtectedRoute>} />
 
             <Route path="*" element={<Navigate to="/login" replace />} />
-
+            <Route path="/hr/certification-tracking" element={<ProtectedRoute role="HR"><HRCertificationTracking /></ProtectedRoute>} />
+            <Route path="/hr/compliance-reports" element={<ProtectedRoute role="HR"><HRComplianceReports /></ProtectedRoute>} />
         </Routes>
     );
 }
