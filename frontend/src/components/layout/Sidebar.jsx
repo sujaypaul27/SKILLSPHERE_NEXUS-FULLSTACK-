@@ -70,6 +70,11 @@ export default function Sidebar() {
             icon: LayoutDashboard,
         },
         {
+            name: "Cert. Tracking",
+            path: "/hr/certification-tracking",
+            icon: GraduationCap
+        },
+        {
             name: "Employees",
             path: "/hr/employees",
             icon: Users,
@@ -124,6 +129,11 @@ export default function Sidebar() {
             path: "/hr/certificates",
             icon: Award,
         },
+        {
+            name: "Compliance & Reports",
+            path: "/hr/compliance-reports",
+            icon: Award,
+        }
     ];
 
     const links = user?.role === "HR"
