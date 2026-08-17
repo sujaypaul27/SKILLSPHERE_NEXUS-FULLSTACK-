@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/SkillSphere-Learning-Workspace/pom.xml" />
         <option value="$PROJECT_DIR$/skillsphere-learning-service/pom.xml" />
+        <option value="$PROJECT_DIR$/career/pom.xml" />
       </list>
     </option>
   </component>
