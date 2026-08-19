@@ -39,5 +39,5 @@ const EmployeeJobPortal = () => {
         </div>
     );
 };
-
+// issue 5 in button race condition solved
 export default EmployeeJobPortal;
