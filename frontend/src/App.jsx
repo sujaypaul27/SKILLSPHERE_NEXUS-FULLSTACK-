@@ -190,6 +190,9 @@ export default function App() {
 
             <Route path="*" element={<Navigate to="/login" replace />} />
             <Route path="/hr/certification-tracking" element={<ProtectedRoute role="HR"><HRCertificationTracking /></ProtectedRoute>} />
+            <Route path="/hr/career-plans" element={<HRCareerPlans />} />
+            <Route path="/hr/job-openings" element={<HRJobOpenings />} />
+            <Route path="/hr/executive-dashboard" element={<HRExecutiveDashboard />} />
             <Route path="/hr/compliance-reports" element={<ProtectedRoute role="HR"><HRComplianceReports /></ProtectedRoute>} />
         </Routes>
     );
