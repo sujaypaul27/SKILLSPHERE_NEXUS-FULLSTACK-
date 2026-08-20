@@ -1794,3 +1794,278 @@ SIDEBAR - CURRENT COMPONENT
     width: 100%;
   }
 }
+/* =========================================================
+   MILESTONE 4 - CAREER & ANALYTICS
+   ========================================================= */
+
+.career-hero {
+  background: linear-gradient(135deg, #5a36bd, #4f2aa8);
+  border-radius: 14px;
+  padding: 28px 30px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.career-hero h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+}
+
+.career-hero p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.roadmap-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.roadmap-node {
+  background: white;
+  border: 2px solid #e1e5eb;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.roadmap-node.current {
+  border-color: #4f2aa8;
+  color: #4f2aa8;
+  background: #f0ebff;
+}
+
+.roadmap-node.target {
+  border-color: #15803d;
+  color: #15803d;
+  background: #f0fdf4;
+}
+
+.roadmap-arrow {
+  color: #9ca3af;
+  font-size: 20px;
+}
+
+.progress-ring-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4f2aa8;
+  background: conic-gradient(#4f2aa8 calc(var(--pct) * 1%), #e5e7eb 0);
+  position: relative;
+}
+
+.progress-circle::before {
+  content: "";
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: white;
+}
+
+.progress-circle span {
+  position: relative;
+  z-index: 1;
+}
+
+.skillgap-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.skillgap-card strong {
+  display: block;
+  font-size: 14px;
+}
+
+.skillgap-card span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.gap-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gap-pill.high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.gap-pill.low {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.gap-pill.none {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.job-card {
+  background: white;
+  border: 1px solid #e1e5eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(79, 42, 168, 0.14);
+}
+
+.job-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.job-card-top h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.job-card-top span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.match-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.match-badge.high {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.match-badge.mid {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.match-badge.low {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.job-skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.skill-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f0ebff;
+  color: #4f2aa8;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.job-openings-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.exec-dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.exec-card {
+  background: white;
+  border: 1px solid #e1e5eb;
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.exec-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: #4f2aa8;
+}
+
+.exec-card-label {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.exec-card-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 8px 0 4px;
+}
+
+.exec-card-sub {
+  font-size: 12px;
+  color: #4f2aa8;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .exec-dash-grid {
+    grid-template-columns: 1fr;
+  }
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+  .roadmap-track {
+    flex-wrap: wrap;
+  }
+}

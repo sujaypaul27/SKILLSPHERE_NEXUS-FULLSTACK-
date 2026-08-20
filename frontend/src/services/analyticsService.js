@@ -1,6 +1,6 @@
 import api from './api';
 
-const BASE = '/api/career/analytics';
+const BASE = '/career/analytics';
 
 const analyticsService = {
     getTrainingAnalytics: () => api.get(`${BASE}/training`),

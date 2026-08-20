@@ -1,32 +1,95 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { Users, Award, Target, Briefcase, GraduationCap, TrendingUp } from 'lucide-react';
 import analyticsService from '../../services/analyticsService';
 
 const HRExecutiveDashboard = () => {
-    const [dashboard, setDashboard] = useState(null);
+    const [dash, setDash] = useState(null);
     const [training, setTraining] = useState(null);
 
-    useEffect(() => {
-        analyticsService.getExecutiveDashboard().then(res => setDashboard(res.data));
-        analyticsService.getTrainingAnalytics().then(res => setTraining(res.data));
+    const loadData = useCallback(async () => {
+        try {
+            const [dashRes, trainRes] = await Promise.all([
+                analyticsService.getExecutiveDashboard(),
+                analyticsService.getTrainingAnalytics(),
+            ]);
+            setDash(dashRes.data);
+            setTraining(trainRes.data);
+        } catch (error) {
+            console.error('Error loading dashboard:', error);
+        }
     }, []);
 
-    if (!dashboard || !training) return <div>Loading...</div>;
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
+
+    if (!dash || !training) return <div className="loading">Loading dashboard...</div>;
 
     return (
-        <div className="hr-page">
-            <h2>Executive Dashboard</h2>
-            <div className="dashboard-cards">
-                <div className="dashboard-card"><h3>{dashboard.activeCareerPlans}</h3><p>Active Career Plans</p></div>
-                <div className="dashboard-card"><h3>{dashboard.promotionsThisYear}</h3><p>Promotions This Year</p></div>
-                <div className="dashboard-card"><h3>{dashboard.skillCoveragePercentage}%</h3><p>Skill Coverage</p></div>
-                <div className="dashboard-card"><h3>{dashboard.totalJobOpenings}</h3><p>Job Openings</p></div>
+        <div className="content">
+            <div className="page-heading">
+                <h1>Executive Dashboard</h1>
+                <p>Career, promotion, and training overview</p>
             </div>
-            <h3>Training Analytics</h3>
-            <div className="dashboard-cards">
-                <div className="dashboard-card"><h3>{training.totalCourses}</h3><p>Total Courses</p></div>
-                <div className="dashboard-card"><h3>{training.totalEnrollments}</h3><p>Total Enrollments</p></div>
-                <div className="dashboard-card"><h3>{training.completionRate?.toFixed(1)}%</h3><p>Completion Rate</p></div>
-                <div className="dashboard-card"><h3>{training.avgScore?.toFixed(1)}</h3><p>Avg Score</p></div>
+
+            <div className="exec-dash-grid">
+                <div className="exec-card">
+                    <div className="exec-card-label">Active Career Plans</div>
+                    <div className="exec-card-value">{dash.activeCareerPlans}</div>
+                    <div className="exec-card-sub"><Target size={13} style={{ verticalAlign: 'middle' }} /> In progress</div>
+                </div>
+                <div className="exec-card">
+                    <div className="exec-card-label">Promotions This Year</div>
+                    <div className="exec-card-value">{dash.promotionsThisYear}</div>
+                    <div className="exec-card-sub"><Award size={13} style={{ verticalAlign: 'middle' }} /> Completed plans</div>
+                </div>
+                <div className="exec-card">
+                    <div className="exec-card-label">Skill Coverage</div>
+                    <div className="exec-card-value">{dash.skillCoveragePercentage}%</div>
+                    <div className="exec-card-sub"><TrendingUp size={13} style={{ verticalAlign: 'middle' }} /> Department level</div>
+                </div>
+                <div className="exec-card">
+                    <div className="exec-card-label">Job Openings</div>
+                    <div className="exec-card-value">{dash.totalJobOpenings}</div>
+                    <div className="exec-card-sub"><Briefcase size={13} style={{ verticalAlign: 'middle' }} /> Internal portal</div>
+                </div>
+                <div className="exec-card">
+                    <div className="exec-card-label">Total Enrollments</div>
+                    <div className="exec-card-value">{dash.totalEnrollments}</div>
+                    <div className="exec-card-sub"><GraduationCap size={13} style={{ verticalAlign: 'middle' }} /> Across courses</div>
+                </div>
+                <div className="exec-card">
+                    <div className="exec-card-label">Training Completion</div>
+                    <div className="exec-card-value">{Math.round(dash.trainingCompletionRate)}%</div>
+                    <div className="exec-card-sub"><Users size={13} style={{ verticalAlign: 'middle' }} /> Completion rate</div>
+                </div>
+            </div>
+
+            <div className="dashboard-card">
+                <div className="card-header">
+                    <div>
+                        <h3>Training Effectiveness</h3>
+                        <p>Course and enrollment breakdown</p>
+                    </div>
+                </div>
+                <div className="stats-grid">
+                    <div className="stat-card">
+                        <span>Total Courses</span>
+                        <strong>{training.totalCourses}</strong>
+                    </div>
+                    <div className="stat-card">
+                        <span>Total Enrollments</span>
+                        <strong>{training.totalEnrollments}</strong>
+                    </div>
+                    <div className="stat-card">
+                        <span>Completed</span>
+                        <strong>{training.completedEnrollments}</strong>
+                    </div>
+                    <div className="stat-card">
+                        <span>Avg Score</span>
+                        <strong>{Math.round(training.avgScore)}</strong>
+                    </div>
+                </div>
             </div>
         </div>
     );

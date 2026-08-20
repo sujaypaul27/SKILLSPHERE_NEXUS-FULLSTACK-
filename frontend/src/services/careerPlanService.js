@@ -1,6 +1,6 @@
 import api from './api';
 
-const BASE = '/api/career/career-plans';
+const BASE = '/career/career-plans';
 
 const careerPlanService = {
     getAll: () => api.get(BASE),

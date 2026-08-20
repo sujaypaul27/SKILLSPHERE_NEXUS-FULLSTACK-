@@ -11,9 +11,7 @@ const HRJobOpenings = () => {
         requiredSkills: ''
     });
 
-    useEffect(() => {
-        loadJobs();
-    }, []);
+
 
     const loadJobs = async () => {
         try {
@@ -23,6 +21,10 @@ const HRJobOpenings = () => {
             console.error('Error loading jobs:', error);
         }
     };
+
+    useEffect(() => {
+        loadJobs();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

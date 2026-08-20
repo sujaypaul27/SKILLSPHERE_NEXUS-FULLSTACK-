@@ -9,6 +9,8 @@ import {
     Target,
     LogOut,
     GraduationCap,
+    Briefcase,
+    TrendingUp,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
@@ -60,6 +62,16 @@ export default function Sidebar() {
             name: "My Certificates",
             path: "/employee/certificates",
             icon: Award,
+        },
+        {
+            name: "Career Plan",
+            path: "/employee/career-plan",
+            icon: TrendingUp,
+        },
+        {
+            name: "Job Portal",
+            path: "/employee/job-portal",
+            icon: Briefcase,
         },
     ];
 
@@ -133,6 +145,21 @@ export default function Sidebar() {
             name: "Compliance & Reports",
             path: "/hr/compliance-reports",
             icon: Award,
+        },
+        {
+            name: "Career Plans",
+            path: "/hr/career-plans",
+            icon: TrendingUp,
+        },
+        {
+            name: "Job Openings",
+            path: "/hr/job-openings",
+            icon: Briefcase,
+        },
+        {
+            name: "Executive Dashboard",
+            path: "/hr/executive-dashboard",
+            icon: LayoutDashboard,
         }
     ];
 

@@ -10,7 +10,9 @@ public class CareerPlan {
     private Long id;
 
     private Long employeeId;
+    @Column(name = "cur_role")
     private String currentRole;
+    @Column(name = "tgt_role")
     private String targetRole;
     private Double progressPercentage;
     private String mentorName;

@@ -12,11 +12,17 @@ import HRCompetencies from "./pages/hr/HRCompetencies";
 import HRCertifications from "./pages/hr/HRCertifications";
 import HRCertificationTracking from "./pages/hr/HRCertificationTracking";
 
+import HRCareerPlans from "./pages/hr/HRCareerPlans";
+import HRJobOpenings from "./pages/hr/HRJobOpenings";
+import HRExecutiveDashboard from "./pages/hr/HRExecutiveDashboard";
+import EmployeeCareerPlan from "./pages/employee/EmployeeCareerPlan";
+import EmployeeJobPortal from "./pages/employee/EmployeeJobPortal";
 import EmployeeProfile from "./pages/employee/EmployeeProfile";
 import EmployeeSkills from "./pages/employee/EmployeeSkills";
 import EmployeeAssessments from "./pages/employee/EmployeeAssessments";
 import EmployeeCompetencies from "./pages/employee/EmployeeCompetencies";
 import EmployeeCertifications from "./pages/employee/EmployeeCertifications";
+import EmployeeCourseDetails from "./pages/employee/EmployeeCourseDetails";
 
 import EmployeeLearning from "./pages/employee/EmployeeLearning";
 import EmployeeLearningPaths from "./pages/employee/EmployeeLearningPaths";
@@ -187,13 +193,15 @@ export default function App() {
             <Route path="/hr/enrollments" element={<ProtectedRoute role="HR"><HREnrollments /></ProtectedRoute>} />
             <Route path="/hr/learning-paths" element={<ProtectedRoute role="HR"><HRLearningPaths /></ProtectedRoute>} />
             <Route path="/hr/certificates" element={<ProtectedRoute role="HR"><HRCertificates /></ProtectedRoute>} />
-
+            <Route path="/employee/courses/:id" element={<ProtectedRoute role="EMPLOYEE"><EmployeeCourseDetails /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/login" replace />} />
             <Route path="/hr/certification-tracking" element={<ProtectedRoute role="HR"><HRCertificationTracking /></ProtectedRoute>} />
-            <Route path="/hr/career-plans" element={<HRCareerPlans />} />
-            <Route path="/hr/job-openings" element={<HRJobOpenings />} />
-            <Route path="/hr/executive-dashboard" element={<HRExecutiveDashboard />} />
-            <Route path="/hr/compliance-reports" element={<ProtectedRoute role="HR"><HRComplianceReports /></ProtectedRoute>} />
+            <Route path="/hr/career-plans" element={<ProtectedRoute role="HR"><HRCareerPlans /></ProtectedRoute>} />
+            <Route path="/hr/job-openings" element={<ProtectedRoute role="HR"><HRJobOpenings /></ProtectedRoute>} />
+            <Route path="/hr/executive-dashboard" element={<ProtectedRoute role="HR"><HRExecutiveDashboard /></ProtectedRoute>} />
+            <Route path="/employee/career-plan" element={<ProtectedRoute role="EMPLOYEE"><EmployeeCareerPlan /></ProtectedRoute>} />
+            <Route path="/employee/job-portal" element={<ProtectedRoute role="EMPLOYEE"><EmployeeJobPortal /></ProtectedRoute>} />
+             <Route path="/hr/compliance-reports" element={<ProtectedRoute role="HR"><HRComplianceReports /></ProtectedRoute>} />
         </Routes>
     );
 }
